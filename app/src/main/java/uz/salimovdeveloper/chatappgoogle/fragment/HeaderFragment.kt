@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import uz.salimovdeveloper.chatappgoogle.R
 import uz.salimovdeveloper.chatappgoogle.databinding.FragmentHeaderBinding
+import uz.salimovdeveloper.chatappgoogle.fragment.models.MyData
 
 class HeaderFragment : Fragment() {
     private lateinit var binding: FragmentHeaderBinding
@@ -15,6 +16,12 @@ class HeaderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHeaderBinding.inflate(layoutInflater)
+
+        val name = MyData.name.toString()
+
+        binding.nameHeader.text = name
+
+//        MyData.name = binding.nameHeader.text.toString()
 
         return binding.root
     }

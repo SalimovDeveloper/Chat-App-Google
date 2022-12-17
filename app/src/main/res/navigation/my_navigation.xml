@@ -22,10 +22,26 @@
         <action
             android:id="@+id/action_homeFragment_to_headerFragment"
             app:destination="@id/headerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_groupFragment"
+            app:destination="@id/groupFragment" />
     </fragment>
     <fragment
         android:id="@+id/headerFragment"
         android:name="uz.salimovdeveloper.chatappgoogle.fragment.HeaderFragment"
         android:label="fragment_header"
         tools:layout="@layout/fragment_header" />
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="uz.salimovdeveloper.chatappgoogle.fragment.UsersFragment"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users" />
+    <fragment
+        android:id="@+id/groupFragment"
+        android:name="uz.salimovdeveloper.chatappgoogle.fragment.GroupFragment"
+        android:label="fragment_group"
+        tools:layout="@layout/fragment_group" />
 </navigation>
