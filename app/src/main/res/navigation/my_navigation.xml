@@ -9,5 +9,23 @@
         android:id="@+id/signUpFragment"
         android:name="uz.salimovdeveloper.chatappgoogle.fragment.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="uz.salimovdeveloper.chatappgoogle.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_headerFragment"
+            app:destination="@id/headerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/headerFragment"
+        android:name="uz.salimovdeveloper.chatappgoogle.fragment.HeaderFragment"
+        android:label="fragment_header"
+        tools:layout="@layout/fragment_header" />
 </navigation>
