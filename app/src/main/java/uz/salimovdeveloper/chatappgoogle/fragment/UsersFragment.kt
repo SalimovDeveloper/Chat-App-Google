@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import uz.salimovdeveloper.chatappgoogle.R
 import uz.salimovdeveloper.chatappgoogle.databinding.FragmentUsersBinding
 import uz.salimovdeveloper.chatappgoogle.fragment.adapters.RvAdapter
@@ -40,12 +41,12 @@ class UsersFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val children = snapshot.children
                 for (child in children) {
-                    val value = child.getValue(User::class.java)
+                    val value = child.getValue(User::class.java!!)
                     if (value!=null){
                         rvAdapter.list.add(value)
                     }
                 }
-                rvAdapter.notifyDataSetChanged()
+//                rvAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
