@@ -38,10 +38,19 @@
         android:id="@+id/usersFragment"
         android:name="uz.salimovdeveloper.chatappgoogle.fragment.UsersFragment"
         android:label="fragment_users"
-        tools:layout="@layout/fragment_users" />
+        tools:layout="@layout/fragment_users" >
+        <action
+            android:id="@+id/action_usersFragment_to_chatsFragment"
+            app:destination="@id/chatsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/groupFragment"
         android:name="uz.salimovdeveloper.chatappgoogle.fragment.GroupFragment"
         android:label="fragment_group"
         tools:layout="@layout/fragment_group" />
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="uz.salimovdeveloper.chatappgoogle.fragment.ChatsFragment"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
 </navigation>

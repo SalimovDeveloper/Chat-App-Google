@@ -6,12 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import uz.salimovdeveloper.chatappgoogle.databinding.ItemRvBinding
 import uz.salimovdeveloper.chatappgoogle.fragment.models.User
+import uz.salimovdeveloper.chatappgoogle.fragment.models.Users
 
-class RvAdapter (var list: ArrayList<User> = ArrayList()) : RecyclerView.Adapter<RvAdapter.Vh>() {
+class RvAdapter (val rvClick: RvClick, var list: ArrayList<Users> = ArrayList()) : RecyclerView.Adapter<RvAdapter.Vh>() {
     inner class Vh(val itemRvBinding: ItemRvBinding) : RecyclerView.ViewHolder(itemRvBinding.root) {
-        fun onBind(user: User) {
-            itemRvBinding.itemName.text = user.displayName
-            Picasso.get().load(user.imageLink).into(itemRvBinding.itemImage)
+        fun onBind(users: Users) {
+            itemRvBinding.itemName.text = users.displayName
+            Picasso.get().load(users.imageLink).into(itemRvBinding.itemImage)
+
+            itemRvBinding.itemName.setOnClickListener {
+                rvClick.ItemClick(users)
+            }
         }
     }
 

@@ -1,0 +1,8 @@
+package uz.salimovdeveloper.chatappgoogle.fragment.adapters
+
+import android.view.View
+import uz.salimovdeveloper.chatappgoogle.fragment.models.Users
+
+interface RvClick {
+    fun ItemClick(users: Users)
+}
