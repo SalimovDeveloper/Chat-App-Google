@@ -14,14 +14,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import uz.salimovdeveloper.chatappgoogle.R
 import uz.salimovdeveloper.chatappgoogle.databinding.FragmentSignUpBinding
 import uz.salimovdeveloper.chatappgoogle.fragment.models.MyData
+import uz.salimovdeveloper.chatappgoogle.fragment.models.User
+import java.lang.ref.Reference
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
-    lateinit var googleSignInClient:GoogleSignInClient
-    lateinit var auth:FirebaseAuth
+    lateinit var googleSignInClient: GoogleSignInClient
+    lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+    private lateinit var userReference: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,11 +35,14 @@ class SignUpFragment : Fragment() {
         binding = FragmentSignUpBinding.inflate(layoutInflater)
         auth = FirebaseAuth.getInstance()
 
-        if (auth.currentUser!=null){
+        if (auth.currentUser != null) {
             findNavController().popBackStack()
             findNavController().navigate(R.id.homeFragment)
             return binding.root
         }
+
+        database = FirebaseDatabase.getInstance()
+        userReference = database.getReference("users")
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -80,16 +89,23 @@ class SignUpFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
 //                    Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
 //                    updateUI(user)
-                    MyData.name = user?.displayName.toString()
-                    Toast.makeText(requireContext(), "${user?.email}", Toast.LENGTH_SHORT).show()
+
+                    val user = User(auth.currentUser!!.displayName.toString(), auth.currentUser!!.photoUrl.toString(), auth.currentUser!!.uid.toString())
+
+                    userReference.child(user.uid).setValue(user)
+
+                    Toast.makeText(requireContext(), "${user?.displayName}", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.homeFragment)
                 } else {
                     // If sign in fails, display a message to the user.
 //                    Log.w(TAG, "signInWithCredential:failure", task.exception)
 //                    updateUI(null)
-                    Toast.makeText(requireContext(), "${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
