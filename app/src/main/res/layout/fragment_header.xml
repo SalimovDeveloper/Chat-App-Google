@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="148dp"
         android:padding="20dp"
-        android:background="#1579C0"
+        android:background="@color/asosiy_rang"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView

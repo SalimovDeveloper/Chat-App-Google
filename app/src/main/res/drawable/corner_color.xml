@@ -4,7 +4,7 @@
     <item>
         <shape android:shape="rectangle">
             <stroke android:width="2dp"
-                android:color="#1579C0"/>
+                android:color="@color/asosiy_rang"/>
             <corners android:radius="0dp"/>
         </shape>
     </item>

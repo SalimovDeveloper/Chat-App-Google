@@ -1,6 +1,8 @@
 package uz.salimovdeveloper.chatappgoogle.fragment.models
 
-class Users {
+import java.io.Serializable
+
+class Users : Serializable{
     var displayName: String = ""
     var imageLink: String = ""
     var uid:String = ""

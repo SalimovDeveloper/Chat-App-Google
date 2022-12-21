@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:openDrawer="start"
+    tools:openDrawer="end"
     tools:context=".fragment.HomeFragment">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_height="50dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/my_viewPager2"
-            android:background="#1579C0"
+            android:background="@color/asosiy_rang"
             >
 
             <LinearLayout
@@ -57,7 +57,7 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="#1579C0"
+            android:background="@color/asosiy_rang"
             app:tabIndicator="@color/white"
             app:tabTextColor="@color/qoshimcha_rang"
             app:tabSelectedTextColor="@color/white"
@@ -87,7 +87,7 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="#1579C0"
+        android:background="@color/asosiy_rang"
         app:itemVerticalPadding="15dp"
         app:itemTextColor="@color/white"
         app:itemTextAppearance="?android:attr/textAppearanceLarge"

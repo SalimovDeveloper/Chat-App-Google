@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
@@ -60,6 +61,6 @@ class UsersFragment : Fragment(), RvClick{
     }
 
     override fun ItemClick(users: Users) {
-        findNavController().navigate(R.id.chatsFragment)
+        findNavController().navigate(R.id.chatsFragment, bundleOf("key" to users))
     }
 }

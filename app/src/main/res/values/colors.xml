@@ -8,5 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="qoshimcha_rang">#1D9EFA</color>
+
+    <color name="asosiy_rang">#1579C0</color>
+    <color name="asosiy_rang2">#1F1F1F</color>
+    <color name="qoshimcha_rang">#2298EC</color>
+    <color name="qoshimcha_rang2">#676767</color>
 </resources>
