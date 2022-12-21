@@ -4,5 +4,8 @@ import android.view.View
 import uz.salimovdeveloper.chatappgoogle.fragment.models.Users
 
 interface RvClick {
-    fun ItemClick(users: Users)
+
+    fun NameClick(users: Users)
+    fun ImageClick(users: Users)
+
 }

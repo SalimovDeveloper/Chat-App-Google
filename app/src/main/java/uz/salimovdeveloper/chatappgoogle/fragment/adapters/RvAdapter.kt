@@ -13,9 +13,11 @@ class RvAdapter (val rvClick: RvClick, var list: ArrayList<Users> = ArrayList())
         fun onBind(users: Users) {
             itemRvBinding.itemName.text = users.displayName
             Picasso.get().load(users.imageLink).into(itemRvBinding.itemImage)
-
             itemRvBinding.itemName.setOnClickListener {
-                rvClick.ItemClick(users)
+                rvClick.NameClick(users)
+            }
+            itemRvBinding.itemImage.setOnClickListener {
+                rvClick.ImageClick(users)
             }
         }
     }

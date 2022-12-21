@@ -60,7 +60,12 @@ class UsersFragment : Fragment(), RvClick{
         })
     }
 
-    override fun ItemClick(users: Users) {
+    override fun NameClick(users: Users) {
         findNavController().navigate(R.id.chatsFragment, bundleOf("key" to users))
     }
+
+    override fun ImageClick(users: Users) {
+        findNavController().navigate(R.id.imageViewFragment, bundleOf("key" to users))
+    }
+
 }

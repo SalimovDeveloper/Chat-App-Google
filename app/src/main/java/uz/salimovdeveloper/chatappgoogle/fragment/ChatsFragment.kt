@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 import uz.salimovdeveloper.chatappgoogle.R
 import uz.salimovdeveloper.chatappgoogle.databinding.FragmentChatsBinding
 import uz.salimovdeveloper.chatappgoogle.fragment.adapters.MyFragmentAdapter
@@ -66,13 +67,22 @@ class ChatsFragment : Fragment() {
 
         binding.nameUser.text = users.displayName.toString()
 
-        binding.sendBtn.setOnClickListener {
-            val myMessage = MyMessage(binding.myMessage.text.toString().trim(), fromUid = auth.uid!!, toUid = users.uid!!)
-            val key = referenceMessage.push().key
-            referenceMessage.child(key!!).setValue(myMessage)
-            Toast.makeText(requireContext(), "Send", Toast.LENGTH_SHORT).show()
-            binding.myMessage.text.clear()
+        Picasso.get().load(users.imageLink).into(binding.imageUser)
 
+        binding.sendBtn.setOnClickListener {
+
+            val user_message = binding.myMessage.text.toString().trim()
+
+            if (user_message.isNotEmpty()){
+
+                val myMessage = MyMessage(binding.myMessage.text.toString().trim(), fromUid = auth.uid!!, toUid = users.uid!!)
+                val key = referenceMessage.push().key
+                referenceMessage.child(key!!).setValue(myMessage)
+                Toast.makeText(requireContext(), "Send", Toast.LENGTH_SHORT).show()
+                binding.myMessage.text.clear()
+
+            }else{
+            }
         }
 
         return binding.root

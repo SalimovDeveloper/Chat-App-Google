@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_usersFragment_to_chatsFragment"
             app:destination="@id/chatsFragment" />
+        <action
+            android:id="@+id/action_usersFragment_to_imageViewFragment"
+            app:destination="@id/imageViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/groupFragment"
@@ -53,4 +56,9 @@
         android:name="uz.salimovdeveloper.chatappgoogle.fragment.ChatsFragment"
         android:label="fragment_chats"
         tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/imageViewFragment"
+        android:name="uz.salimovdeveloper.chatappgoogle.fragment.ImageViewFragment"
+        android:label="fragment_image_view"
+        tools:layout="@layout/fragment_image_view" />
 </navigation>
