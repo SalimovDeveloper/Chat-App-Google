@@ -36,6 +36,7 @@ class SignUpFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         if (auth.currentUser != null) {
+            MyData.name = auth.currentUser?.displayName.toString()
             findNavController().popBackStack()
             findNavController().navigate(R.id.homeFragment)
             return binding.root
