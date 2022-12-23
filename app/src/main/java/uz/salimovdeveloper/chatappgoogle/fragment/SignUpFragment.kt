@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase
 import uz.salimovdeveloper.chatappgoogle.R
 import uz.salimovdeveloper.chatappgoogle.databinding.FragmentSignUpBinding
 import uz.salimovdeveloper.chatappgoogle.fragment.models.MyData
-import uz.salimovdeveloper.chatappgoogle.fragment.models.User
+import uz.salimovdeveloper.chatappgoogle.fragment.models.Users
 import java.lang.ref.Reference
 
 class SignUpFragment : Fragment() {
@@ -28,6 +28,7 @@ class SignUpFragment : Fragment() {
     lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var userReference: DatabaseReference
+    private lateinit var users: Users
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -92,11 +93,11 @@ class SignUpFragment : Fragment() {
 //                    Log.d(TAG, "signInWithCredential:success")
 //                    updateUI(user)
 
-                    val user = User(auth.currentUser!!.displayName.toString(), auth.currentUser!!.photoUrl.toString(), auth.currentUser!!.uid.toString())
+                    val users = Users(auth.currentUser!!.displayName.toString(), auth.currentUser!!.photoUrl.toString(), auth.currentUser!!.uid.toString())
 
-                    userReference.child(user.uid).setValue(user)
+                    userReference.child(users.uid).setValue(users)
 
-                    Toast.makeText(requireContext(), "${user?.displayName}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "${users?.displayName}", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.homeFragment)
                 } else {
                     // If sign in fails, display a message to the user.

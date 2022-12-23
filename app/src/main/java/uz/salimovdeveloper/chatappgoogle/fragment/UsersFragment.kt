@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import uz.salimovdeveloper.chatappgoogle.R
 import uz.salimovdeveloper.chatappgoogle.databinding.FragmentUsersBinding
 import uz.salimovdeveloper.chatappgoogle.fragment.adapters.RvAdapter
 import uz.salimovdeveloper.chatappgoogle.fragment.adapters.RvClick
-import uz.salimovdeveloper.chatappgoogle.fragment.models.User
 import uz.salimovdeveloper.chatappgoogle.fragment.models.Users
 
 class UsersFragment : Fragment(), RvClick{
@@ -31,7 +31,7 @@ class UsersFragment : Fragment(), RvClick{
         database = FirebaseDatabase.getInstance()
         userReference = database.getReference("users")
 
-        rvAdapter = RvAdapter(this@UsersFragment , ArrayList())
+        rvAdapter = RvAdapter(this@UsersFragment , ArrayList(), auth = FirebaseAuth.getInstance(), requireContext())
         binding.rv.adapter = rvAdapter
 
         loadData()
